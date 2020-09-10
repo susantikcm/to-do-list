@@ -1,12 +1,8 @@
-let addButton = document.getElementById("add");
-let todoList = document.getElementById("todoList");
-
 let toggleCheck = (id) => {
-    event.preventDefault();
     document.querySelector('#' + id).classList.toggle('checked');
 }
 
-const removeItem = (id) => {     
+const removeItem = (id) => {   
     let item = document.getElementById(id);
     item.remove();
 }
@@ -35,16 +31,29 @@ let createTodo = (todo) => {
     return item;
 }
 
-addButton.addEventListener('click', () => {
-    event.preventDefault();
-    let inputTodo = document.getElementById("newTodo");
+let addNewTodo = () => {
+    let inputTodo = document.querySelector("#newTodo");
 
     if(inputTodo.value === "") {
         return;
     }
     else {
         let newItem = createTodo(inputTodo.value);
+        let todoList = document.querySelector("#todoList");
         todoList.appendChild(newItem);
         inputTodo.value = "";
+    }
+}
+
+document.querySelector("#add").addEventListener('click', () => {
+    event.preventDefault();  
+    addNewTodo();
+});
+
+document.querySelector("#newTodo").addEventListener('keyup', (event) => {
+    if(event.keyCode === 13 || event.key === "Enter")
+    {
+        event.preventDefault();
+        addNewTodo();
     }
 });
