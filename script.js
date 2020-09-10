@@ -2,7 +2,8 @@ let addButton = document.getElementById("add");
 let todoList = document.getElementById("todoList");
 
 let toggleCheck = (id) => {
-    document.getElementById(id).classList.toggle('checked');
+    event.preventDefault();
+    document.querySelector('#' + id).classList.toggle('checked');
 }
 
 const removeItem = (id) => {     
@@ -11,22 +12,21 @@ const removeItem = (id) => {
 }
 
 let createTodo = (todo) => {
-    let countItems = "item" + (todoList.getElementsByTagName("li").length + 1);
+    let countItems = "todo" + (todoList.getElementsByTagName("li").length + 1);
     let item = document.createElement("li");
     item.setAttribute("id", countItems);
 
     let itemCheckbox = document.createElement("input");
-    // Assigning the attributes to create checkbox 
     itemCheckbox.type = "checkbox";
-    itemCheckbox.onclick = () => toggleCheck(item.id);
+    itemCheckbox.addEventListener('click', () => toggleCheck(item.id));
 
     let itemLabel = document.createElement("label");
     itemLabel.appendChild(document.createTextNode(todo)); 
 
     let itemDeleteButton = document.createElement("button");
-    itemDeleteButton.innerHTML = "Delete";
+    itemDeleteButton.textContent = "Delete";
     // itemDeleteButton.className = "delete";
-    itemDeleteButton.onclick = () => removeItem(item.id);
+    itemDeleteButton.addEventListener('click', () => removeItem(item.id));
 
     item.appendChild(itemCheckbox);
     item.appendChild(itemLabel);
