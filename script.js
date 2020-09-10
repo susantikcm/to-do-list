@@ -25,14 +25,14 @@ const createTodo = () => {
         const itemLabel = document.createElement("label");
         itemLabel.appendChild(document.createTextNode(inputTodo)); 
 
-        const itemDeconsteButton = document.createElement("button");
-        itemDeconsteButton.textContent = "Delete";
-        // itemDeconsteButton.className = "deconste";
-        itemDeconsteButton.addEventListener('click', () => removeItem(item.id));
+        const itemDeleteButton = document.createElement("button");
+        itemDeleteButton.textContent = "Delete";
+        // itemDeleteButton.className = "Delete";
+        itemDeleteButton.addEventListener('click', () => removeItem(item.id));
 
         item.appendChild(itemCheckbox);
         item.appendChild(itemLabel);
-        item.appendChild(itemDeconsteButton);
+        item.appendChild(itemDeleteButton);
     
         document.querySelector("#todoList").appendChild(item);
         document.querySelector("#newTodo").value = "";
