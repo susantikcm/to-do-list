@@ -1,11 +1,6 @@
-const toggleCheck = (id) => {
-    document.querySelector('#' + id).classList.toggle('checked');
-}
+const toggleCheck = (id) => document.querySelector('#' + id).classList.toggle('checked');
 
-const removeItem = (id) => {   
-    const item = document.querySelector('#' + id);
-    item.remove();
-}
+const removeItem = (id) => document.querySelector('#' + id).remove();
 
 const createTodo = () => {
     const inputTodo = document.querySelector("#newTodo").value;
@@ -39,7 +34,7 @@ const createTodo = () => {
     }
 }
 
-document.querySelector("#add").addEventListener('click', () => {
+document.querySelector("#add").addEventListener('click', (event) => {
     event.preventDefault();  
     createTodo();
 });
